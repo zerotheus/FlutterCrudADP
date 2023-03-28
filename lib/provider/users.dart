@@ -20,4 +20,8 @@ class Users with ChangeNotifier {
   int get countAlunos {
     return _alunos.length;
   }
+
+  Aluno byindex(int index) {
+    return _alunos.values.elementAt(index);
+  }
 }
