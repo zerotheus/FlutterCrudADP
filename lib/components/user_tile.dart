@@ -25,8 +25,18 @@ class UserTile extends StatelessWidget {
         width: 100,
         child: Row(
           children: <Widget>[
-            IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed("/Cadastro", arguments: aluno);
+              },
+              icon: Icon(Icons.edit),
+              color: Colors.cyanAccent,
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.delete),
+              color: Colors.red,
+            ),
           ],
         ),
       ),

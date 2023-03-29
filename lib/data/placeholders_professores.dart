@@ -1,7 +1,7 @@
 import '../models/professor.dart';
 
 const placeholderProfessores = {
-  '3': const Professor(
+  '760': const Professor(
       cpf: "760",
       nome: "Ari",
       avatarUrl:
