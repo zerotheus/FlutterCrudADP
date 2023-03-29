@@ -13,7 +13,7 @@ class Users with ChangeNotifier {
   final Map<String, Professor> _professores = {...placeholderProfessores};
   final Map<String, Disciplina> _disciplinas = {...placeholderDisciplinas};
 
-  List<Aluno> get TodosAlunos {
+  List<Aluno> get todosAlunos {
     return [..._alunos.values];
   }
 
@@ -23,5 +23,29 @@ class Users with ChangeNotifier {
 
   Aluno byindex(int index) {
     return _alunos.values.elementAt(index);
+  }
+
+  void putAluno(Aluno aluno) {
+    if (aluno == null) {
+      return;
+    }
+    if (aluno.cpf != null &&
+        aluno.cpf.trim().isNotEmpty &&
+        _alunos.containsKey(aluno.cpf)) {
+      _alunos.update(
+          aluno.cpf,
+          (_) => Aluno(
+              cpf: aluno.cpf,
+              nome: aluno.nome + " alterado",
+              avatarUrl: aluno.avatarUrl));
+      notifyListeners();
+      return;
+    }
+    _alunos.putIfAbsent(
+        '${aluno.cpf}',
+        () => Aluno(
+            cpf: aluno.cpf, nome: aluno.nome, avatarUrl: aluno.avatarUrl));
+
+    notifyListeners();
   }
 }
