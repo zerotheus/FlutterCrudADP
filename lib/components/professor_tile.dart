@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_adp/models/aluno.dart';
+import 'package:flutter_crud_adp/models/professor.dart';
 import 'package:provider/provider.dart';
 import '../provider/users.dart';
 
-class UserTile extends StatelessWidget {
-  final Aluno aluno;
+class ProfessorTile extends StatelessWidget {
+  final Professor professor;
 
-  UserTile(this.aluno);
+  ProfessorTile(this.professor);
 
   @override
   Widget build(BuildContext context) {
-    final avatar = aluno.avatarUrl == null || aluno.avatarUrl.isEmpty
+    final avatar = professor.avatarUrl == null || professor.avatarUrl.isEmpty
         ? CircleAvatar(
             child: Icon(Icons.person),
           )
         : CircleAvatar(
-            backgroundImage: NetworkImage(aluno.avatarUrl),
+            backgroundImage: NetworkImage(professor.avatarUrl),
           );
     return ListTile(
       leading: avatar,
-      title: Text(aluno.nome),
-      subtitle: Text(aluno.cpf),
+      title: Text(professor.nome),
+      subtitle: Text(professor.cpf),
       trailing: Container(
         width: 100,
         child: Row(
@@ -28,14 +28,15 @@ class UserTile extends StatelessWidget {
             IconButton(
               onPressed: () {
                 Navigator.of(context)
-                    .pushNamed("/CadastroAluno", arguments: aluno);
+                    .pushNamed("/Cadastroprofessor", arguments: professor);
               },
               icon: Icon(Icons.edit),
               color: Colors.cyanAccent,
             ),
             IconButton(
               onPressed: () {
-                Provider.of<Users>(context, listen: false).removeAluno(aluno);
+                Provider.of<Users>(context, listen: false)
+                    .removeProfessor(professor);
               },
               icon: Icon(Icons.delete),
               color: Colors.red,

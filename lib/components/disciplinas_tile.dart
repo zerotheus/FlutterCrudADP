@@ -1,26 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_adp/models/aluno.dart';
+import 'package:flutter_crud_adp/models/disciplinas.dart';
 import 'package:provider/provider.dart';
+
 import '../provider/users.dart';
 
-class UserTile extends StatelessWidget {
-  final Aluno aluno;
+class DisciplinaTile extends StatelessWidget {
+  final Disciplina disciplina;
 
-  UserTile(this.aluno);
+  DisciplinaTile(this.disciplina);
 
   @override
   Widget build(BuildContext context) {
-    final avatar = aluno.avatarUrl == null || aluno.avatarUrl.isEmpty
-        ? CircleAvatar(
-            child: Icon(Icons.person),
-          )
-        : CircleAvatar(
-            backgroundImage: NetworkImage(aluno.avatarUrl),
-          );
     return ListTile(
-      leading: avatar,
-      title: Text(aluno.nome),
-      subtitle: Text(aluno.cpf),
+      title: Text(disciplina.nome),
+      subtitle: Text(disciplina.codigo),
       trailing: Container(
         width: 100,
         child: Row(
@@ -28,14 +21,15 @@ class UserTile extends StatelessWidget {
             IconButton(
               onPressed: () {
                 Navigator.of(context)
-                    .pushNamed("/CadastroAluno", arguments: aluno);
+                    .pushNamed("/Cadastrodisciplina", arguments: disciplina);
               },
               icon: Icon(Icons.edit),
               color: Colors.cyanAccent,
             ),
             IconButton(
               onPressed: () {
-                Provider.of<Users>(context, listen: false).removeAluno(aluno);
+                Provider.of<Users>(context, listen: false)
+                    .removeDisciplina(disciplina);
               },
               icon: Icon(Icons.delete),
               color: Colors.red,
