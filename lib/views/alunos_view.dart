@@ -14,7 +14,7 @@ class AlunosView extends StatelessWidget {
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).pushNamed("/Cadastro");
+                Navigator.of(context).pushNamed("/CadastroAluno");
               },
               icon: const Icon(Icons.add))
         ],
