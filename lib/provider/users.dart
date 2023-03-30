@@ -35,9 +35,7 @@ class Users with ChangeNotifier {
       _alunos.update(
           aluno.cpf,
           (_) => Aluno(
-              cpf: aluno.cpf,
-              nome: aluno.nome + " alterado",
-              avatarUrl: aluno.avatarUrl));
+              cpf: aluno.cpf, nome: aluno.nome, avatarUrl: aluno.avatarUrl));
       notifyListeners();
       return;
     }
@@ -47,5 +45,99 @@ class Users with ChangeNotifier {
             cpf: aluno.cpf, nome: aluno.nome, avatarUrl: aluno.avatarUrl));
 
     notifyListeners();
+  }
+
+  void removeAluno(Aluno aluno) {
+    if (aluno != null && aluno.cpf != null) {
+      _alunos.remove(aluno.cpf);
+      notifyListeners();
+    }
+  }
+
+  List<Professor> get todosProfessores {
+    return [..._professores.values];
+  }
+
+  int get countProfessores {
+    return _professores.length;
+  }
+
+  Professor professorByIndex(int index) {
+    return _professores.values.elementAt(index);
+  }
+
+  void putProfessor(Professor professor) {
+    if (professor == null) {
+      return;
+    }
+    if (professor.cpf != null &&
+        professor.cpf.trim().isNotEmpty &&
+        _alunos.containsKey(professor.cpf)) {
+      _alunos.update(
+          professor.cpf,
+          (_) => Aluno(
+              cpf: professor.cpf,
+              nome: professor.nome,
+              avatarUrl: professor.avatarUrl));
+      notifyListeners();
+      return;
+    }
+    _alunos.putIfAbsent(
+        '${professor.cpf}',
+        () => Aluno(
+            cpf: professor.cpf,
+            nome: professor.nome,
+            avatarUrl: professor.avatarUrl));
+
+    notifyListeners();
+  }
+
+  void removeProfessor(Professor professor) {
+    if (professor != null && professor.cpf != null) {
+      _alunos.remove(professor.cpf);
+      notifyListeners();
+    }
+  }
+
+  List<Disciplina> get todasDisciplinas {
+    return [..._disciplinas.values];
+  }
+
+  int get countDisciplinas {
+    return _disciplinas.length;
+  }
+
+  Disciplina DisciplinaByindex(int index) {
+    return _disciplinas.values.elementAt(index);
+  }
+
+  void putDisciplinas(Disciplina disciplina) {
+    if (disciplina == null) {
+      return;
+    }
+    if (disciplina.codigo != null && disciplina.codigo.trim().isNotEmpty) {
+      _disciplinas.update(
+          disciplina.codigo,
+          (value) => Disciplina(
+              nome: disciplina.nome,
+              codigo: disciplina.codigo,
+              professor: disciplina.professor));
+      notifyListeners();
+      return;
+    }
+    _disciplinas.putIfAbsent(
+        '${disciplina.codigo}',
+        () => Disciplina(
+            nome: disciplina.nome,
+            codigo: disciplina.codigo,
+            professor: disciplina.professor));
+    notifyListeners();
+  }
+
+  void removeDisciplina(Disciplina disciplina) {
+    if (disciplina != null && disciplina.codigo != null) {
+      _alunos.remove(disciplina.codigo);
+      notifyListeners();
+    }
   }
 }
