@@ -1,10 +1,10 @@
 import 'package:flutter_crud_adp/models/professor.dart';
 
 class Disciplina {
-  final String nome;
-  final String codigo;
-  final Professor professor;
+  String nome;
+  String codigo;
+  Professor? professor;
 
-  const Disciplina(
+  Disciplina(
       {required this.nome, required this.codigo, required this.professor});
 }
