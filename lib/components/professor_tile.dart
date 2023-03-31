@@ -28,7 +28,7 @@ class ProfessorTile extends StatelessWidget {
             IconButton(
               onPressed: () {
                 Navigator.of(context)
-                    .pushNamed("/Cadastroprofessor", arguments: professor);
+                    .pushNamed("/CadastroProfessor", arguments: professor);
               },
               icon: Icon(Icons.edit),
               color: Colors.cyanAccent,

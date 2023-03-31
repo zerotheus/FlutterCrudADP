@@ -11,11 +11,11 @@ class ProfessoresView extends StatelessWidget {
     final Users professores = Provider.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Disciplinas"),
+        title: Text("Professores"),
         actions: <Widget>[
           IconButton(
               onPressed: () {
-                Navigator.of(context).pushNamed("/CadastroAluno");
+                Navigator.of(context).pushNamed("/CadastroProfessor");
               },
               icon: const Icon(Icons.add))
         ],

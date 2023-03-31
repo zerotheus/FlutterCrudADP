@@ -72,19 +72,19 @@ class Users with ChangeNotifier {
     }
     if (professor.cpf != null &&
         professor.cpf.trim().isNotEmpty &&
-        _alunos.containsKey(professor.cpf)) {
-      _alunos.update(
+        _professores.containsKey(professor.cpf)) {
+      _professores.update(
           professor.cpf,
-          (_) => Aluno(
+          (_) => Professor(
               cpf: professor.cpf,
               nome: professor.nome,
               avatarUrl: professor.avatarUrl));
       notifyListeners();
       return;
     }
-    _alunos.putIfAbsent(
+    _professores.putIfAbsent(
         '${professor.cpf}',
-        () => Aluno(
+        () => Professor(
             cpf: professor.cpf,
             nome: professor.nome,
             avatarUrl: professor.avatarUrl));
@@ -94,7 +94,7 @@ class Users with ChangeNotifier {
 
   void removeProfessor(Professor professor) {
     if (professor != null && professor.cpf != null) {
-      _alunos.remove(professor.cpf);
+      _professores.remove(professor.cpf);
       notifyListeners();
     }
   }

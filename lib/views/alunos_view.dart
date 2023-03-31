@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_adp/components/user_tile.dart';
+import 'package:flutter_crud_adp/db/aluno_helper.dart';
 import 'package:flutter_crud_adp/models/aluno.dart';
 import 'package:flutter_crud_adp/provider/users.dart';
 import 'package:provider/provider.dart';
 
-class AlunosView extends StatelessWidget {
+class _AlunosView extends State<AlunosView> {
   @override
   Widget build(BuildContext context) {
     final Users alunos = Provider.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Alunos"),
@@ -25,4 +27,9 @@ class AlunosView extends StatelessWidget {
               UserTile(alunos.todosAlunos.elementAt(index))),
     );
   }
+}
+
+class AlunosView extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _AlunosView();
 }

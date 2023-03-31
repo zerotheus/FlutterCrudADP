@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_adp/provider/users.dart';
-import 'package:flutter_crud_adp/views/aluno_professor_form.dart';
 import 'package:flutter_crud_adp/views/alunos_view.dart';
 import 'package:flutter_crud_adp/views/disciplinas_view.dart';
+import 'package:flutter_crud_adp/views/professor_form.dart';
 import 'package:flutter_crud_adp/views/professor_view.dart';
 import 'package:flutter_crud_adp/views/tela_inicial_view.dart';
+import 'package:flutter_crud_adp/views/aluno_form.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -30,7 +31,9 @@ class MyApp extends StatelessWidget {
             "/Alunos": (context) => AlunosView(),
             "/Professores": (context) => ProfessoresView(),
             "/Disciplinas": (context) => DisciplinasView(),
-            "/Cadastro": (_) => AlunoProfessorForm(),
+            "/CadastroAluno": (_) => AlunoForm(),
+            "/CadastroProfessor": (_) => professorForm(),
+            // "/CadastroDisciplina":
           },
           home: Telaincialview(),
         ));
