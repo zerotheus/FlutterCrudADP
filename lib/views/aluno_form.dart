@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_crud_adp/db/aluno_helper.dart';
 import 'package:provider/provider.dart';
+import '../db/aluno_model.dart';
 
-import '../models/aluno.dart';
-import '../provider/users.dart';
+class AlunoForm extends StatefulWidget {
+  @override
+  State<AlunoForm> createState() => _AlunoFormState();
+}
 
-class AlunoForm extends StatelessWidget {
+class _AlunoFormState extends State<AlunoForm> {
   @override
   final _form = GlobalKey<FormState>();
+
   final Map<String, String> _formData = {};
+
+  bool _isEditMode = false;
 
   void _loadAlunoData(Aluno aluno) {
     _formData['cpf'] = aluno.cpf;
@@ -20,6 +27,7 @@ class AlunoForm extends StatelessWidget {
     if (aluno != null) {
       print('nao era nulo');
       _loadAlunoData(aluno);
+      _isEditMode = true;
     }
 
     return Scaffold(
@@ -27,11 +35,22 @@ class AlunoForm extends StatelessWidget {
         IconButton(
             onPressed: () {
               _form.currentState?.save();
-              Provider.of<Users>(context, listen: false).putAluno(Aluno(
-                  cpf: _formData['cpf']!,
-                  nome: _formData['nome']!,
-                  avatarUrl: _formData['avatarUrl']!));
-              Navigator.of(context).pop();
+              if (_isEditMode) {
+                AlunoHelper.updateAluno(
+                    aluno!.id!,
+                    Aluno(
+                        id: aluno.id,
+                        cpf: _formData['cpf']!,
+                        nome: _formData['nome']!,
+                        avatarUrl: _formData['avatarUrl']!));
+              } else {
+                AlunoHelper.addAluno(Aluno(
+                    cpf: _formData['cpf']!,
+                    nome: _formData['nome']!,
+                    avatarUrl: _formData['avatarUrl']!));
+              }
+              Navigator.popAndPushNamed(context, '/Alunos');
+              setState(() {});
             },
             icon: Icon(Icons.save))
       ]),

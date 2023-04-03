@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_crud_adp/models/aluno.dart';
+import 'package:flutter_crud_adp/db/aluno_helper.dart';
 import 'package:provider/provider.dart';
+import '../db/aluno_model.dart';
 import '../provider/users.dart';
 
 class UserTile extends StatelessWidget {
@@ -35,7 +36,7 @@ class UserTile extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                Provider.of<Users>(context, listen: false).removeAluno(aluno);
+                AlunoHelper.deletaAluno(aluno.id!);
               },
               icon: Icon(Icons.delete),
               color: Colors.red,

@@ -13,6 +13,7 @@ class AlunoHelper {
 
   static Future<List<Aluno>> listaAlunos() async {
     final db = await CreateTable.init();
+    print("Post create table");
     final maps = await db.query("Alunos");
 
     return List.generate(maps.length, (index) {
@@ -38,9 +39,9 @@ class AlunoHelper {
 
   static Future<int> updateAluno(int id, Aluno aluno) async {
     final db = await CreateTable.init();
-
-    int result = await db
+    print(id);
+    print(aluno);
+    return await db
         .update("Alunos", aluno.toMap(), where: "id = ?", whereArgs: [id]);
-    return result;
   }
 }
