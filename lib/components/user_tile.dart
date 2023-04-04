@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_adp/db/aluno_helper.dart';
-import 'package:provider/provider.dart';
 import '../db/aluno_model.dart';
-import '../provider/users.dart';
 
 class UserTile extends StatelessWidget {
   final Aluno aluno;
@@ -37,6 +35,8 @@ class UserTile extends StatelessWidget {
             IconButton(
               onPressed: () {
                 AlunoHelper.deletaAluno(aluno.id!);
+                Navigator.pop(context);
+                Navigator.pushNamed(context, "/Alunos");
               },
               icon: Icon(Icons.delete),
               color: Colors.red,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_adp/db/aluno_helper.dart';
-import 'package:provider/provider.dart';
 import '../db/aluno_model.dart';
 
 class AlunoForm extends StatefulWidget {
@@ -9,7 +8,6 @@ class AlunoForm extends StatefulWidget {
 }
 
 class _AlunoFormState extends State<AlunoForm> {
-  @override
   final _form = GlobalKey<FormState>();
 
   final Map<String, String> _formData = {};
@@ -25,13 +23,12 @@ class _AlunoFormState extends State<AlunoForm> {
   Widget build(BuildContext context) {
     final Aluno? aluno = ModalRoute.of(context)?.settings.arguments as Aluno?;
     if (aluno != null) {
-      print('nao era nulo');
       _loadAlunoData(aluno);
       _isEditMode = true;
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text("Cadastro Aluno"), actions: <Widget>[
+      appBar: AppBar(title: const Text("Cadastro Aluno"), actions: <Widget>[
         IconButton(
             onPressed: () {
               _form.currentState?.save();
@@ -49,34 +46,35 @@ class _AlunoFormState extends State<AlunoForm> {
                     nome: _formData['nome']!,
                     avatarUrl: _formData['avatarUrl']!));
               }
+              Navigator.of(context).pop();
               Navigator.popAndPushNamed(context, '/Alunos');
               setState(() {});
             },
-            icon: Icon(Icons.save))
+            icon: const Icon(Icons.save))
       ]),
       body: Padding(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: Form(
           key: _form,
           child: Column(
             children: <Widget>[
               TextFormField(
-                initialValue: _formData['cpf'],
-                decoration: InputDecoration(labelText: "cpf"),
-                onSaved: (value) => {
-                  _formData['cpf'] = value!,
-                },
-              ),
-              TextFormField(
                 initialValue: _formData['nome'],
-                decoration: InputDecoration(labelText: "nome"),
+                decoration: const InputDecoration(labelText: "nome"),
                 onSaved: (value) => {
                   _formData['nome'] = value!,
                 },
               ),
               TextFormField(
+                initialValue: _formData['cpf'],
+                decoration: const InputDecoration(labelText: "cpf"),
+                onSaved: (value) => {
+                  _formData['cpf'] = value!,
+                },
+              ),
+              TextFormField(
                 initialValue: _formData['avatarUrl'],
-                decoration: InputDecoration(labelText: "AvatarUrl"),
+                decoration: const InputDecoration(labelText: "AvatarUrl"),
                 onSaved: (value) => {
                   _formData['avatarUrl'] = value!,
                 },

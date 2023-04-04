@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
             "/Professores": (context) => ProfessoresView(),
             "/Disciplinas": (context) => DisciplinasView(),
             "/CadastroAluno": (_) => AlunoForm(),
-            "/CadastroProfessor": (_) => professorForm(),
+            "/CadastroProfessor": (_) => ProfessorForm(),
             // "/CadastroDisciplina":
           },
           home: Telaincialview(),

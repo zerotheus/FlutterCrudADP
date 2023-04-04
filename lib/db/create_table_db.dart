@@ -18,6 +18,12 @@ class CreateTable {
           nome TEXT,
           cpf TEXT,
           avatarUrl TEXT)""");
+      db.execute("""
+          CREATE TABLE IF NOT EXISTS Professores(
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          nome TEXT,
+          cpf TEXT,
+          avatarUrl TEXT)""");
     });
   }
 }
