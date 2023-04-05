@@ -1,8 +1,5 @@
-/* import 'package:flutter/material.dart';
-import 'package:flutter_crud_adp/models/disciplinas.dart';
-import 'package:provider/provider.dart';
-
-import '../provider/users.dart';
+import 'package:flutter/material.dart';
+import '../db/disciplina_model.dart';
 
 class DisciplinaTile extends StatelessWidget {
   final Disciplina disciplina;
@@ -23,15 +20,12 @@ class DisciplinaTile extends StatelessWidget {
                 Navigator.of(context)
                     .pushNamed("/Cadastrodisciplina", arguments: disciplina);
               },
-              icon: Icon(Icons.edit),
+              icon: const Icon(Icons.edit),
               color: Colors.cyanAccent,
             ),
             IconButton(
-              onPressed: () {
-                Provider.of<Users>(context, listen: false)
-                    .removeDisciplina(disciplina);
-              },
-              icon: Icon(Icons.delete),
+              onPressed: () {},
+              icon: const Icon(Icons.delete),
               color: Colors.red,
             ),
           ],
@@ -40,4 +34,3 @@ class DisciplinaTile extends StatelessWidget {
     );
   }
 }
- */

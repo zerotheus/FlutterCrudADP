@@ -24,6 +24,14 @@ class CreateTable {
           nome TEXT,
           cpf TEXT,
           avatarUrl TEXT)""");
+      db.execute("""
+          CREATE TABLE IF NOT EXISTS Disciplinas(
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          nome TEXT,
+          codigo TEXT,
+          prof_id INTEGER,
+          FOREIGN KEY (prof_id) REFERENCES Professores(id)
+          )""");
     });
   }
 }
