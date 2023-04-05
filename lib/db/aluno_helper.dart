@@ -1,4 +1,3 @@
-import 'package:sqflite/sqflite.dart' as sql;
 import 'package:sqflite/sqlite_api.dart';
 import 'create_table_db.dart';
 import 'aluno_model.dart';
