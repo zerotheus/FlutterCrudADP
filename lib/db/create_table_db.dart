@@ -10,28 +10,31 @@ class CreateTable {
     Directory directory = await getApplicationDocumentsDirectory();
     final path = join(directory.path, "Alunos.db");
     print("create table");
+    //deleteDatabase("Alunos.db");
     return await openDatabase(path, version: 1,
         onCreate: (Database db, int version) async {
-      await db.execute("""
+      await db.execute(
+          """
           CREATE TABLE IF NOT EXISTS Alunos(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           nome TEXT,
           cpf TEXT,
           avatarUrl TEXT)""");
-      db.execute("""
+      db.execute(
+          """
           CREATE TABLE IF NOT EXISTS Professores(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           nome TEXT,
           cpf TEXT,
           avatarUrl TEXT)""");
-      db.execute("""
+      db.execute(
+          """
           CREATE TABLE IF NOT EXISTS Disciplinas(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           nome TEXT,
           codigo TEXT,
           prof_id INTEGER,
-          FOREIGN KEY (prof_id) REFERENCES Professores(id)
-          )""");
+          FOREIGN KEY (prof_id) REFERENCES Professores(id))""");
     });
   }
 }

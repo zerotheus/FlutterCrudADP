@@ -12,7 +12,7 @@ class DisciplinaHelper {
 
   static Future<List<Disciplina>> listaDisciplinas() async {
     final db = await CreateTable.init();
-    print("Post create table");
+    print("Lista disciplinas");
     final maps = await db.query("Disciplinas");
 
     return List.generate(maps.length, (index) {
