@@ -10,7 +10,7 @@ class UserTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final avatar = aluno.avatarUrl == null || aluno.avatarUrl.isEmpty
-        ? CircleAvatar(
+        ? const CircleAvatar(
             child: Icon(Icons.person),
           )
         : CircleAvatar(
@@ -20,7 +20,7 @@ class UserTile extends StatelessWidget {
       leading: avatar,
       title: Text(aluno.nome),
       subtitle: Text(aluno.cpf),
-      trailing: Container(
+      trailing: SizedBox(
         width: 100,
         child: Row(
           children: <Widget>[
@@ -29,7 +29,7 @@ class UserTile extends StatelessWidget {
                 Navigator.of(context)
                     .pushNamed("/CadastroAluno", arguments: aluno);
               },
-              icon: Icon(Icons.edit),
+              icon: const Icon(Icons.edit),
               color: Colors.cyanAccent,
             ),
             IconButton(
@@ -38,7 +38,7 @@ class UserTile extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, "/Alunos");
               },
-              icon: Icon(Icons.delete),
+              icon: const Icon(Icons.delete),
               color: Colors.red,
             ),
           ],

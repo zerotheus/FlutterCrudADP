@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_adp/db/professor_helper.dart';
-import 'package:provider/provider.dart';
 import '../db/professor_model.dart';
 
 class ProfessorTile extends StatelessWidget {
