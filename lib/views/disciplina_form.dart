@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_crud_adp/db/disciplina_helper.dart';
 import 'package:flutter_crud_adp/db/disciplina_model.dart';
-import '../db/aluno_model.dart';
 
 class DisciplinaForm extends StatefulWidget {
   @override
@@ -35,7 +34,12 @@ class _DisciplinaFormState extends State<DisciplinaForm> {
             onPressed: () {
               _form.currentState?.save();
               if (_isEditMode) {
-                /*Disciplina update*/
+                DisciplinaHelper.updateDisciplina(
+                    disciplina!.id!,
+                    Disciplina(
+                        id: disciplina.id,
+                        codigo: _formData['codigo']!,
+                        nome: _formData['nome']!));
               } else {
                 DisciplinaHelper.addDisciplina(Disciplina(
                   codigo: _formData['codigo']!,
