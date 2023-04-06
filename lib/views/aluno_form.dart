@@ -20,6 +20,7 @@ class _AlunoFormState extends State<AlunoForm> {
     _formData['avatarUrl'] = aluno.avatarUrl;
   }
 
+  @override
   Widget build(BuildContext context) {
     final Aluno? aluno = ModalRoute.of(context)?.settings.arguments as Aluno?;
     if (aluno != null) {

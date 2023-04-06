@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_crud_adp/components/user_tile.dart';
 import 'package:flutter_crud_adp/db/aluno_helper.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:provider/provider.dart';
 
 class _AlunosView extends State<AlunosView> {
   Widget loadAlunos() {
@@ -38,7 +37,7 @@ class _AlunosView extends State<AlunosView> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Alunos"),
+        title: const Text("Alunos"),
         actions: <Widget>[
           IconButton(
               onPressed: () {
